@@ -22,7 +22,9 @@ import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -150,6 +152,8 @@ fun AlignYourBodyRow(
     modifier: Modifier = Modifier
 ) {
     LazyRow (
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        contentPadding = PaddingValues(horizontal = 16.dp),
         modifier = modifier
     ) {
         items(alignYourBodyData) {item ->
@@ -244,6 +248,8 @@ fun SearchBarPreview() {
 fun AlignYourBodyElementPreview() {
     MySootheTheme {
         AlignYourBodyElement(
+            drawable = R.drawable.ab1_inversions,
+            text = R.string.ab1_inversions,
             modifier = Modifier.padding(8.dp)
         )
     }

@@ -14,10 +14,16 @@ import androidx.compose.ui.Modifier
 
 @Composable
 fun WaterCounter(modifier: Modifier = Modifier) {
-    var count by remember { mutableStateOf(0)}
-
     Column (modifier = modifier.padding(16.dp)){
+        var count by remember { mutableStateOf(0)}
         if (count > 0) {
+            var showTask by remember { mutableStateOf(true)}
+            if (showTask) {
+                WellnessTaskItem(
+                    taskName = "Have you taken your 15 min walk today?",
+                    onClose = { showTask = false }
+                )
+            }
             Text(text = "You've had ${count} glasses.")
         }
 

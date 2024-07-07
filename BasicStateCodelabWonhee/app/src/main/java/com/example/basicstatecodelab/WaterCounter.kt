@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Modifier
 
 @Composable
-fun WaterCounter(modifier: Modifier = Modifier) {
+fun StatelessCounter(count: Int, onIncrement: () -> Unit, modifier: Modifier = Modifier) {
     Column(modifier = modifier.padding(16.dp)) {
         var count by rememberSaveable { mutableStateOf(0) }
         if (count > 0) {
@@ -25,6 +25,13 @@ fun WaterCounter(modifier: Modifier = Modifier) {
             Text("Add one")
         }
     }
+}
+
+@Composable
+fun StatefulCounter(modifier: Modifier = Modifier) {
+    var count by rememberSaveable { mutableStateOf(0) }
+    StatelessCounter(count, { count++ }, modifier)
+}
 
     /* https://developer.android.com/codelabs/jetpack-compose-state#6
     Column (modifier = modifier.padding(16.dp)){
@@ -49,4 +56,3 @@ fun WaterCounter(modifier: Modifier = Modifier) {
             }
         }
     }*/
-}

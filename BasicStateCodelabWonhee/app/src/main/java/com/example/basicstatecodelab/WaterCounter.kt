@@ -15,6 +15,17 @@ import androidx.compose.ui.Modifier
 
 @Composable
 fun WaterCounter(modifier: Modifier = Modifier) {
+    Column(modifier = modifier.padding(16.dp)) {
+        var count by remember { mutableStateOf(0) }
+        if (count > 0) {
+            Text("You've had $count glasses.")
+        }
+        Button(onClick = { count++ }, Modifier.padding(top = 8.dp), enabled = count < 10) {
+            Text("Add one")
+        }
+    }
+
+    /* https://developer.android.com/codelabs/jetpack-compose-state#6
     Column (modifier = modifier.padding(16.dp)){
         var count by remember { mutableStateOf(0)}
         if (count > 0) {
@@ -36,6 +47,5 @@ fun WaterCounter(modifier: Modifier = Modifier) {
                 Text("Clear water count")
             }
         }
-
-    }
+    }*/
 }
